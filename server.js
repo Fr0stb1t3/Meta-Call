@@ -31,6 +31,10 @@ app.get('/rooms', (req, res) => {
   res.send("Rooms: "+  reply)
   //console.log(rooms)
 })
+app.get("/api", (req, res) => {
+  res.json({ message: "Hello from server!" });
+});
+
 app.get('/:room', (req, res) => {
   if(!rooms.has(req.params.room)||rooms.get(req.params.room).size<=5)
     res.render('room', { roomId: req.params.room })
@@ -74,8 +78,7 @@ function RemoveUser(roomId, userId)
     }
     users.delete(userId);
 }
-server.listen(port)
 //Connection to React
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
+app.listen(port, () => {
+  console.log(`Server listening on ${port}`);
 });
