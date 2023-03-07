@@ -6,7 +6,7 @@ function App() {
   const [showTile, setShowTile] = useState(false);
   const[data,setData] = React.useState(null);
   React.useEffect(()=>{
-    fetch('/api').then(res=>res.json().then(data=>setData(data.message)));
+    fetch('/users').then(res=>res.json().then(data=>setData(data.message)));
   },[]);
   useEffect(() =>{
     setTimeout(() =>{
@@ -21,28 +21,10 @@ function App() {
       <div className={`logo ${logoSize}`}>MetaCall</div>
       <div className={`description ${showTile ? 'show' : ''}`}>
         <p>Welcome to MetaCall, the next generation video conferencing platform.</p>
-        <button>Get started</button>
-        <p>{!data ? "Loading..." : data}</p>
+        <a href='https://meta-call.onrender.com/'><button>Get started</button></a>
       </div>
     </div>
   );
 }
 
 export default App;
-/*
-<div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>*/
